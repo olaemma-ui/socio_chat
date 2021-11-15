@@ -1,0 +1,104 @@
+.color{
+    background-color:  rgba(98, 100, 102, 0.207);
+}
+::-webkit-scrollbar {
+    height: 10px;
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: #878585;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(184, 183, 183);
+}
+::-webkit-scrollbar-thumb:hover{
+    cursor: pointer;
+    width:
+    5px;
+}
+.hh-1{
+    height: 420px;
+}
+.z--1{
+    z-index: -10;
+}
+.bg-img{
+    background-image: url(img/log.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+::-webkit-file-upload-button{
+    background-color: #1b2132;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+}
+.testimonials{
+    background-image: url(img/testimonial.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.right{
+    animation-name: right_move;
+    animation-duration: 0.5s;
+}
+.user{
+    background-image: url(img/Vector_2648.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@keyframes right_move {
+    from {transform: translateX(400px);}
+    to{transform: translateX(00px);}
+}
+.bg-darker{
+    background-color: #1b2132;
+}
+.bg-dark{
+    background-color: #161b27;
+}
+.bg-darker-h{
+    background-color: #1b2132;
+}
+.bg-darker-h:hover{
+    background-color: #161b27;
+}
+.border-b-dark{
+    border-bottom: solid 2px #233343;
+}
+.text-dark-200{
+    color: rgb(186, 186, 186);
+}
+.border-t-dark{
+    border-top: solid 2px #233343;
+}
+.w-100{
+    width: 90vw;
+}
+/* .display{ */
+    /* visibility: hidden; */
+/* } */
+/* @media screen and (max-width: 1000px) { */
+    /* .display{ */
+        /* visibility: visible; */
+    /* } */
+/* } */
+@media screen and (max-width: 600px){
+    .side-nav{
+        display: block;
+    }
+    .w-100{
+        width: 100%;
+    }
+}
+.e-404{
+    background-image: url(img/404.png);
+    background-position: center;
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+}
