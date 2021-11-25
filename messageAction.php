@@ -41,8 +41,17 @@
                 $update = "UPDATE recent SET message = '".$txt."', img = '".$file_name."',date =  CURRENT_TIMESTAMP(), sender = '".$_SESSION["userid"]."',receiver = '".$_GET["id"]."' WHERE message_id = '".$mess_id."' OR message_id = '".sha1($_SESSION["userid"].$_GET["id"])."'";
                 $up_query = mysqli_query($con, $update);
               }else{
-                // $mess_id = sha1($_GET["id"].$_SESSION["userid"]);
                 $insert = "INSERT INTO recent values('', '".$txt."', '".$file_name."',      CURRENT_TIMESTAMP(), '".$_SESSION["userid"]."', '".$mess_id."', '".$_GET["id"]."')";
+                $query = mysqli_query($con, $insert);
+              }
+
+              $select = "SELECT * FROM friends WHERE messageId = '".$mess_id."' OR messageId = '".sha1($_SESSION["userid"].$_GET["id"])."'";
+              $query = mysqli_query($con, $select);
+              if (mysqli_num_rows($query) > 0) {
+                $update = "UPDATE friends SET status = '1' WHERE messageId = '".$mess_id."' OR messageId = '".sha1($_SESSION["userid"].$_GET["id"])."'";
+                $up_query = mysqli_query($con, $update);
+              }else{
+                $insert = "INSERT INTO friends values('', '".$_GET["id"]."', '".$_SESSION["userid"]."',  CURRENT_TIMESTAMP(),'0', '".$mess_id."')";
                 $query = mysqli_query($con, $insert);
               }
             }
@@ -55,7 +64,7 @@
               if ($_SESSION["userid"] == $row["sender"]) {
                 ?>
                   <div class="receiver flex flex-col bg-blue-900 p-2 md:w-4/12 w-3/4 m-2
-                    rounded" style="align-self: flex-end;">
+                    rounded-xl" style="align-self: flex-end;">
                     <span class="txt text-white">
 
                       <?php
@@ -65,8 +74,7 @@
                           $img = array("jpg"=>"image/jpg", "png"=>"image/png","jpeg"=>"image/
                           jpeg","gif"=>"image/gif");
                           if (array_key_exists(strtolower($ext), $img)) { ?>
-                            <img src="assets/uploads/<?=$row["img"]?>" class="w-full
-                            max-h-64" alt="" srcset="">
+                              <img src="assets/uploads/<?=$row["img"]?>" onclick="zoom(this.src)" class="w-full max-h-64 rounded cursor-pointer" alt="" srcset="">
                           <?php }
                         }
                       ?>
@@ -78,13 +86,21 @@
                       <span class="note">
                         <i class="fa fa-check"></i>
                       </span>
-                      <?=substr($row["date"], 10)?>
+                      <?php
+                        if(getdate()["mday"] == $row["date"][8].$row["date"][9]){
+                          echo substr($row["date"], 10);
+                        }
+                        else{
+                          echo substr($row["date"], 0, 10)."<br>".substr($row["date"], 10)  ;
+                        }
+                      ?>
                     </spn>
                   </div>
                 <?php
               }else{
                 ?>
-                  <div class="sender bg-darker p-2 m-2 md:w-4/12 w-3/4 rounded text-white
+                  <div class="sender bg-darker p-2 m-2 md:w-4/12 w-3/4 m-2
+                    rounded-xl text-white
                     flex flex-col ">
                     <span class="txt text-white">
                       <?php
@@ -94,8 +110,7 @@
                           $img = array("jpg"=>"image/jpg", "png"=>"image/png","jpeg"=>"image/
                           jpeg","gif"=>"image/gif");
                           if (array_key_exists(strtolower($ext), $img)) { ?>
-                            <img src="assets/uploads/<?=$row["img"]?>" class="w-full
-                          max-h-64" alt="" srcset="">
+                              <img src="assets/uploads/<?=$row["img"]?>" onclick="zoom(this.src)" class="w-full max-h-64 rounded cursor-pointer" alt="" srcset="">
                           <?php }
                         }
                       ?>
@@ -106,9 +121,16 @@
 
                     <spn class="time text-xs text-right text-dark-200">
                       <span class="note">
-                        <i class="far fa-user-circle"></i>
+                        <i class="far fa-clock"></i>
                       </span>
-                      <?=substr($row["date"], 10)?>
+                      <?php
+                        if(getdate()["mday"] == $row["date"][8].$row["date"][9]){
+                          echo substr($row["date"], 10);
+                        }
+                        else{
+                          echo substr($row["date"], 0, 10)."<br>".substr($row["date"], 10)  ;
+                        }
+                      ?>
                     </spn>
 
                   </div>

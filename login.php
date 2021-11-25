@@ -15,9 +15,6 @@
           if ($psw_sha == $pass) {
               $_SESSION["userid"] = $row["userID"];
               $_SESSION["password"] = $pass;
-              $file = fopen("login.socio", "a+");
-              fwrite($file, $_SESSION["userid"]."\n");
-              fclose($file);
               header("location: chat.php");
           }else{
             $alert = "Wrong password";

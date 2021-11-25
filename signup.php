@@ -112,6 +112,54 @@
                       ?>">
             </label>
 
+            <label for="user" class="font-bold text-md mt-5 block">
+              Gender <sup class="text-md">*</sup>
+              <label for="err" class="text-red-500 text-xs md:inline block">
+                <?php
+                  if (isset($gen_err)) {
+                    echo $gen_err;
+                  }
+                ?>
+              </label>
+            </label>
+            <label for="gender" class="block rounded w-full border flex align-middle bg-darker text-white">
+              <i class="far fa-user p-3 text-xl"></i>
+
+                <select name="gender" id="gender" class="ml-2 text-xl w-full h-full p-4 border-l text-blue-400 rounded-none">
+                  <option class="text-xl" value="<?php if (isset($gen[0])){echo $gen[0];}else echo "";?>">
+                    <?php
+                      if (isset($gen)){
+                        echo $gen;
+                      }else echo "......";
+                    ?></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </label>
+
+            <div class="mt-3 w-full md:p-1">
+              <label for="lname" class="font-bold text-md">
+                Country <sup class="text-md">*</sup>
+
+                <label for="err" class="text-red-500 text-xs md:inline block">
+                  <?php
+                    if (isset($name_err[2])) {
+                      echo $name_err[2];
+                    }
+                  ?>
+                </label>
+              </label>
+              <label for="lname" class="block rounded w-full border flex align-middle bg-darker text-white">
+                <i class="far fa-user p-3 text-xl"></i>
+                <input type="text" name="name[]" class="ml-2 w-full h-full p-4 border-l text-blue-400 rounded-none" id="lname"
+                value="<?php
+                          if (isset($name[2])){
+                            echo $name[2];
+                          }
+                        ?>">
+              </label>
+            </div>
+
             <label for="psw" class="font-bold block mt-5 text-md">
               Password<sup class="text-md">*</sup>
 
@@ -121,7 +169,7 @@
                         echo $psw_err[0];
                       }
                     ?>
-                  </label>
+              </label>
             </label>
             <label for="psw" class="block rounded w-full border flex align-middle bg-darker text-white">
               <i class="far fa-eye-slash p-3 pr-2 text-xl"></i>

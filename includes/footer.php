@@ -1,3 +1,6 @@
+<div class="w-full">
+  Developed by Olaemma
+</div>
 </body>
   <script>
     var bool = true;

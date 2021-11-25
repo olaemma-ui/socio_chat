@@ -3,11 +3,13 @@
   $psw_err = array();
   $name_err = array();
   $email_err = array();
+  $gen_err;
 
   $uname = array();
   $psw = array();
   $name = array();
   $email = array();
+  $gen;
 
 
   function validate ($data){
@@ -101,5 +103,22 @@
         }
       }
     }
+
+    /**
+     * Gender Validate
+     **/
+    if (isset($_POST["gen"])) {
+        if (!empty($_POST["gen"])) {
+          $regex = validate($_POST["gen"]);
+          if (!preg_match("/^[a-zA-Z]*$/", $regex)) {
+            $gen_err = "!!!!";
+          }else{
+            $gen = $_POST["gen"];
+          }
+        }
+        else{
+          $gen_err = "All fields are required **";
+        }
+      }
   }
 ?>

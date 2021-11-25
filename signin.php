@@ -32,7 +32,7 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include "includes/validate.php";
 
-    if (empty($uname_err) && empty($psw_err) && empty($name_err) && empty($email_err)) {
+    if (empty($uname_err) && empty($psw_err) && empty($name_err) && empty($email_err) && empty($gen_err)) {
 
       if (sha1($psw[0]) == sha1($psw[1])) {
         $select = "SELECT * FROM user WHERE username = '".$uname[0]."'";
@@ -41,7 +41,7 @@
         if (!mysqli_num_rows($query) > 0) {
           $psw_sha = sha1($psw[0]);
           $userID = sha1(userID());
-          $insert = "INSERT INTO user VALUES('', '".$name[0]."', '".$name[1]."', '".$email[0]."', '".$uname[0]."', '".$psw_sha."', '".$userID."', 'avatar3.png')";
+          $insert = "INSERT INTO user VALUES('', '".$name[0]."', '".$name[1]."', '".$email[0]."', '".$uname[0]."', '".$psw_sha."', '".$userID."', 'avatar3.png', '".$gen."', '".$name[2]."')";
           $query = mysqli_query($con, $insert);
           if ($query) {
             $_SESSION["userid"] = $userID;

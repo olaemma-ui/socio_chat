@@ -6,7 +6,7 @@
 ?>
 <div class="flex lg:flex-nowrap flex-wrap border-t-dark h-full fixed w-full">
 
-  <div class="side-nav bg-darker shadow-xl lg:w-96 w-full h-full overflow-y-auto" id="sidebar">
+  <div class="side-nav bg-darker shadow-xl lg:w-80 w-full h-full overflow-y-auto" id="sidebar">
     <div class="search w-full">
       <input type="text" class="w-full p-3 md:text-xl text-sm" placeholder="@Search { Username }" id="search">
     </div>

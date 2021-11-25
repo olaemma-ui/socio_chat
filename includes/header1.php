@@ -27,13 +27,13 @@
         </a>
       </li>
       <?php }?>
-      <li class="list p-1">
+      <!-- <li class="list p-1">
         <a href="./chat.php" class="link text-white w-full block p-3 bg-darker-h border-b-dark  border-b-blue-400 flex justify-between">Messages <i class="far fa-comment-dots"></i> </a>
-      </li>
-
+      </li> -->
+<!--
       <li class="list p-1">
         <a href="" class="link text-white w-full block p-3 bg-darker-h border-b-dark border-b-blue-400 flex justify-between ">Friends <i class="fa fa-user-plus"></i></a>
-      </li>
+      </li> -->
 
     </ul>
     <ul class="fixed bottom-0 w-full">
